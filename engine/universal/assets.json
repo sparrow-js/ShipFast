@@ -20,12 +20,12 @@
       "version": "1.0.0-alpha2",
       "library": "te",
       "urls": [
-        "http://localhost:3000/tw/js/tw-elements-react.umd.min.js",
-        "http://localhost:3000/tw/css/tw-elements-react.min.css"
+        "https://www.onesteps.shop/tw/js/tw-elements-react.umd.min.js",
+        "https://www.onesteps.shop/tw/css/tw-elements-react.min.css"
       ],
       "editUrls": [
-        "http://localhost:3000/tw/js/tw-elements-react.umd.min.js",
-        "http://localhost:3000/tw/css/tw-elements-react.min.css"
+        "https://www.onesteps.shop/tw/js/tw-elements-react.umd.min.js",
+        "https://www.onesteps.shop/tw/css/tw-elements-react.min.css"
       ]
     }
   ],
