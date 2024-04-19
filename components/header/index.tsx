@@ -44,8 +44,18 @@ export default function Header() {
             </nav>
             <div>
                 <div className="hidden lg:flex items-center gap-4">
-                <a href="http://app.localhost:3000/sign-in">Sign In</a>
-                <a href="http://app.localhost:3000" className="rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-black text-white hover:bg-gray-800  border-2 border-transparent">Build site</a></div>
+                <a href={
+                    process.env.NEXT_PUBLIC_VERCEL_ENV
+                    ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                    : `"http://app.localhost:3000/sign-in"`
+                }>Sign In</a>
+                <a 
+                    href={
+                        process.env.NEXT_PUBLIC_VERCEL_ENV
+                        ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                        : "http://app.localhost:3000"
+                    }
+                 className="rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-black text-white hover:bg-gray-800  border-2 border-transparent">Build site</a></div>
             </div>
         </header>
     )
