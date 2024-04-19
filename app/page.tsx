@@ -23,8 +23,10 @@ export default function Home() {
       toast('enter content');
       return;
     };
-
-    router.push(`http://app.localhost:3000/builder/tryout?data=${JSON.stringify({
+    
+    router.push(`${process.env.NEXT_PUBLIC_VERCEL_ENV
+      ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+      : `http://app.localhost:3000`}/builder/tryout?data=${JSON.stringify({
       prompt: promptValue,
       generateId
     })}`);
