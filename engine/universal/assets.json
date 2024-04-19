@@ -1,0 +1,82 @@
+{
+  "packages": [
+    {
+      "package": "moment",
+      "version": "2.24.0",
+      "urls": [
+        "https://g.alicdn.com/mylib/moment/2.24.0/min/moment.min.js"
+      ],
+      "library": "moment"
+    },
+    {
+      "package": "lodash",
+      "library": "_",
+      "urls": [
+        "https://g.alicdn.com/platform/c/lodash/4.6.1/lodash.min.js"
+      ]
+    },
+    {
+      "package": "tw-elements-react",
+      "version": "1.0.0-alpha2",
+      "library": "te",
+      "urls": [
+        "http://localhost:3000/tw/js/tw-elements-react.umd.min.js",
+        "http://localhost:3000/tw/css/tw-elements-react.min.css"
+      ],
+      "editUrls": [
+        "http://localhost:3000/tw/js/tw-elements-react.umd.min.js",
+        "http://localhost:3000/tw/css/tw-elements-react.min.css"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "exportName": "teMeta",
+      "npm": {
+        "package": "tw-elements-react"
+      },
+      "url": "http://localhost:3000/tw/meta.umd.min.js",
+      "urls": {
+        "default": "http://localhost:3000/tw/meta.umd.min.js",
+        "design": "http://localhost:3000/tw/meta.umd.min.js"
+      }
+    },
+    {
+      "exportName": "AlifdProLayoutMeta",
+      "npm": {
+        "package": "@alifd/pro-layout",
+        "version": "1.0.1-beta.5"
+      },
+      "url": "https://alifd.alicdn.com/npm/@alifd/pro-layout@1.0.1-beta.5/build/lowcode/meta.js",
+      "urls": {
+        "default": "https://alifd.alicdn.com/npm/@alifd/pro-layout@1.0.1-beta.5/build/lowcode/meta.js",
+        "design": "https://alifd.alicdn.com/npm/@alifd/pro-layout@1.0.1-beta.5/build/lowcode/meta.design.js"
+      }
+    }
+  ],
+  "sort": {
+    "groupList": [
+      "精选组件",
+      "原子组件"
+    ],
+    "categoryList": [
+      "基础元素",
+      "布局容器类",
+      "表格类",
+      "表单详情类",
+      "帮助类",
+      "对话框类",
+      "业务类",
+      "通用",
+      "引导",
+      "信息输入",
+      "信息展示",
+      "信息反馈"
+    ]
+  },
+  "groupList": [
+    "精选组件",
+    "原子组件"
+  ],
+  "ignoreComponents": {}
+}
