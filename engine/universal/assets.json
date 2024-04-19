@@ -35,10 +35,10 @@
       "npm": {
         "package": "tw-elements-react"
       },
-      "url": "http://localhost:3000/tw/meta.umd.min.js",
+      "url": "https://www.onesteps.shop/tw/meta.umd.min.js",
       "urls": {
-        "default": "http://localhost:3000/tw/meta.umd.min.js",
-        "design": "http://localhost:3000/tw/meta.umd.min.js"
+        "default": "https://www.onesteps.shop/tw/meta.umd.min.js",
+        "design": "https://www.onesteps.shop/tw/meta.umd.min.js"
       }
     },
     {
