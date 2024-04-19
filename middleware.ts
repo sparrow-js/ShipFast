@@ -101,6 +101,7 @@ export default async function middleware(req: NextRequest) {
     );
   }
 
+  console.log('*********', hostname)
   if (
     hostname === "localhost:3000" ||
     hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN
