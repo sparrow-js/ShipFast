@@ -68,6 +68,7 @@ function getInjectUrls(resourceType, type = 'url'): Promise<any> {
 
   return new Promise((resolve) => {
     if (!urlCache) {
+      // @ts-ignore
       const urlParams = queryString.parse(window.location.search);
       let urls = urlParams[queryFlag] || [];
       urls = Array.isArray(urls) ? urls : [urls];
@@ -164,7 +165,7 @@ function envFilter(injects) {
   if (!injects) {
     return [];
   }
-
+  // @ts-ignore
   const urlParams = queryString.parse(window.location.search);
 
   // 从 window 或者 url 中获取当前是设计器还是预览环境；没有配置则读取 window 是否有 VisualEngine

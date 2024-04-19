@@ -12,7 +12,7 @@ import {
   Skeleton as InnerSkeleton,
   SettingsPrimaryPane,
   registerDefaults,
-  DataSettingsPrimaryPane
+  // DataSettingsPrimaryPane
 } from '@/engine/editor-skeleton';
 
 import DesignerPlugin from '@/engine/plugin-designer';
@@ -180,17 +180,17 @@ export const __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = {
         //   },
         // });
 
-        skeleton.add({
-          area: 'leftArea',
-          name: 'outlinePaneData',
-          type: 'PanelDock',
-          content: DataSettingsPrimaryPane,
-          panelProps: {
-            area: isInFloatArea ? 'leftFloatArea' : 'leftFixedArea',
-            keepVisibleWhileDragging: true,
-            ...engineConfig.get('defaultOutlinePaneProps'),
-          },
-        });
+        // skeleton.add({
+        //   area: 'leftArea',
+        //   name: 'outlinePaneData',
+        //   type: 'PanelDock',
+        //   content: DataSettingsPrimaryPane,
+        //   panelProps: {
+        //     area: isInFloatArea ? 'leftFloatArea' : 'leftFixedArea',
+        //     keepVisibleWhileDragging: true,
+        //     ...engineConfig.get('defaultOutlinePaneProps'),
+        //   },
+        // });
 
         // DataSettingsPrimaryPane
         // skeleton.add({
