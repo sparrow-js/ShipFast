@@ -6,7 +6,7 @@ import {
   experimental_StreamData,
 } from 'ai';
 import OpenAI from 'openai';
-import {ProductsStoreSchema} from '@/service/generate/ProductsStore';
+import {AdvantagesStoreSchema} from '@/service/generate/AdvantagesStore';
 import zodToJsonSchema from 'zod-to-json-schema';
 
 // Create an OpenAI API client (that's edge friendly!)
@@ -22,9 +22,9 @@ const tools: Tool[] = [
   {
     type: 'function',
     function: {
-      name: 'get_productsStore',
+      name: 'get_advantagesStore',
       description: 'The following is a schema definition for sell shop app. Generate 6 products',
-      parameters: zodToJsonSchema(ProductsStoreSchema.data),
+      parameters: zodToJsonSchema(AdvantagesStoreSchema.data),
     }
   },
 ];
