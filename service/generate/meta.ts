@@ -38,23 +38,23 @@ const Meta = {
         // }
     ],
     store: [
-        {
-            id: 'Style',
-            schema: 'StyleSchema',
-            type: 'schema',
-        },
-        {
-            id: 'HeaderStore',
-            schema: 'HeaderStoreSchema',
-            type: 'schema',
-            nodeId: "node_ockzs2vw4373",
-        },
-        {
-            id: 'BannerStore',
-            schema: 'BannerStoreSchema',
-            type: 'schema',
-            nodeId: "node_ockzs2vw4371",
-        },
+        // {
+        //     id: 'Style',
+        //     schema: 'StyleSchema',
+        //     type: 'schema',
+        // },
+        // {
+        //     id: 'HeaderStore',
+        //     schema: 'HeaderStoreSchema',
+        //     type: 'schema',
+        //     nodeId: "node_ockzs2vw4373",
+        // },
+        // {
+        //     id: 'BannerStore',
+        //     schema: 'BannerStoreSchema',
+        //     type: 'schema',
+        //     nodeId: "node_ockzs2vw4371",
+        // },
         {
             id: 'AdvantagesStore',
             schema: 'AdvantagesStoreSchema',
@@ -62,13 +62,13 @@ const Meta = {
             nodeId: "node_ockzs2vw43712",
             operate: 'fetchIcon'
         },
-        {
-            id: 'ProductsStore',
-            schema: 'ProductsStoreSchema',
-            type: 'schema',
-            nodeId: "node_ockzs2vw4375",
-            operate: 'fetchImage'
-        },
+        // {
+        //     id: 'ProductsStore',
+        //     schema: 'ProductsStoreSchema',
+        //     type: 'schema',
+        //     nodeId: "node_ockzs2vw4375",
+        //     operate: 'fetchImage'
+        // },
     ]
 };
 
