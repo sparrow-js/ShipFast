@@ -94,9 +94,9 @@ export async function POST(req: Request) {
     experimental_streamData: true,
   });
 
-  data.append({
-    text: 'Hello, how are you?',
-  });
+  // data.append({
+  //   text: 'Hello, how are you?',
+  // });
 
   return new StreamingTextResponse(stream, {}, data);
 }
