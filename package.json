@@ -27,6 +27,7 @@
     "@tremor/react": "^3.14.1",
     "acorn": "^8.11.3",
     "ahooks": "^3.7.10",
+    "ai": "^3.0.24",
     "axios": "^1.6.7",
     "canvas-confetti": "^1.9.2",
     "case": "^1.6.3",
@@ -76,7 +77,8 @@
     "unsplash-js": "^7.0.19",
     "uuid": "^9.0.1",
     "zen-logger": "^1.1.4",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "zod-to-json-schema": "^3.22.5"
   },
   "devDependencies": {
     "@types/canvas-confetti": "^1.6.4",

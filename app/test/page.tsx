@@ -1,8 +1,7 @@
 "use client";
 
 import { Button } from '@/components/ui/button'
-
-
+const textDecoder = new TextDecoder('utf-8');
 export default function Page({
   params: { domain },
 }: {
@@ -10,31 +9,31 @@ export default function Page({
 }) {
 
     const handlerTest = async () => {
-        try {
-            const uri = "/api/get-component-data";
-            const params = {
-              prompt: 'sell cup',
-              data: {
-                schema: 'FeatureSchema'
-              }
-            };
-      
-            const resp = await fetch(uri, {
-              method: "POST",
-              body: JSON.stringify(params),
-            });
-      
-            if (resp.ok) {
-              const res = await resp.json();
-              if (res.data) {
-                return;
-              }
+      fetch("/api/chat-with-tools", {
+        method: "POST",
+      })
+      // Retrieve its body as ReadableStream
+      .then((response: any) => {
+        const reader = response.body.getReader();
+        return new ReadableStream({
+          start(controller) {
+            return pump();
+            function pump(): any {
+              return reader.read().then(({ done, value }: { done: boolean; value: Uint8Array }) => {
+                console.log('********', textDecoder.decode(value))
+                // When no more data needs to be consumed, close the stream
+                if (done) {
+                  controller.close();
+                  return;
+                }
+                // Enqueue the next data chunk into our target stream
+                controller.enqueue(value);
+                return pump();
+              });
             }
-      
-          } catch (e) {
-      
-            console.log("get user info failed: ", e);
-          }
+          },
+        });
+      });
     }
 
     return (
