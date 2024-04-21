@@ -1,4 +1,4 @@
-import { createLanguageModel, createJsonTranslator, processRequests } from "../../typechat";
+import { createLanguageModel, createJsonTranslator } from "../../typechat";
 import { createTypeScriptJsonValidator } from "../../typechat/ts";
 import { ShopDataResponse } from "./schema";
 

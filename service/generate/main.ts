@@ -43,17 +43,17 @@ export async function getAIComponent(request: string, data: {
 
     }
 
-    if (data.operate === 'fetchIcon') {
-        const imageRes = await getNounImage(request);
-        const imageList = imageRes && imageRes.images ? imageRes.images : []
-        if ("list" in cart) {
-            cart.list.map((item: any, index) => {
-                if (imageList[index]) {
-                    item.icon = imageList[index].url
-                }
-                return item;
-            })
-        }
-    }
+    // if (data.operate === 'fetchIcon') {
+    //     const imageRes = await getNounImage(request);
+    //     const imageList = imageRes && imageRes.images ? imageRes.images : []
+    //     if ("list" in cart) {
+    //         cart.list.map((item: any, index) => {
+    //             if (imageList[index]) {
+    //                 item.icon = imageList[index].url
+    //             }
+    //             return item;
+    //         })
+    //     }
+    // }
     return cart;
 }

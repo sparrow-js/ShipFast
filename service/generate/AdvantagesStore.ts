@@ -10,21 +10,21 @@ Wide variety of choices
 
 const WideAdvantage = z.object(
     {
-        icon: z.string().describe('Font Awesome for icons. E.g. "fa fa-birthday-cake"'),
+        icon: z.literal('https://static.thenounproject.com/png/6785279-200.png'),
         title: z.union([z.literal('Wide Selection'), z.literal('Wide Range of Options'), z.literal('Wide variety of options'), z.literal('Wide Variety of Designs'), z.literal('Wide variety of choices'), Wide]),
         description: z.string().describe(' Generate Advantage description. The number of words is between 15 and 25. Required')
     }
 );
 
 const QualityAdvantage = z.object({
-    icon: z.string().describe('Font Awesome for icons. E.g. "fa fa-birthday-cake"'),
+    icon: z.literal('https://static.thenounproject.com/png/6785279-200.png'),
     title: z.union([z.literal('Superior Quality'), z.literal('Quality ingredients' ), z.literal('Quality Assurance')]),
     description: z.string().describe('Generate Advantage description. The number of words is between 15 and 25. Required')
 })
 
 
 const PricesAdvantage = z.object({
-    icon: z.literal('fa fa-dollar-sign'),
+    icon: z.literal('https://static.thenounproject.com/png/6785279-200.png'),
     title: z.literal('Competitive Prices'),
     description: z.string().describe('Generate Advantage description. The number of words is between 15 and 25. Required')
 })
