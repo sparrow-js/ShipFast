@@ -29,6 +29,14 @@ const tools: Tool[] = [
   },
 ];
 
+async function sleep() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(1)
+    }, 10000)
+  })
+}
+
 export async function POST(req: Request) {
   // const { messages } = await req.json();
   const messages: any = [
@@ -38,7 +46,34 @@ export async function POST(req: Request) {
     },
     {"role": "user", "content": "cup shop"}
   ];
+    const uri = "https://www.onesteps.shop/api/get-image-info";
+    const params = {
+      type: 'icon',
+      prompt: 'cup'
+    };
+    const resp = await fetch(uri, {
+      method: "POST",
+      body: JSON.stringify(params),
+    });
 
+    if (resp.ok) {
+        const res = await resp.json();
+        if (res.data) {
+            console.log('**************', res.data);
+            // const imageList = res.data && res.data.images ? res.data.images : []
+            // if ("list" in cart) {
+            //     cart.list.map((item: any, index) => {
+            //         if (imageList[index]) {
+            //             item.icon = imageList[index].url
+            //         }
+            //         return item;
+            //     })
+            // }
+        }
+    }
+
+    const sleepres = await sleep();
+    
 
   const model = 'gpt-4-turbo';
   // console.log('**********',  zodToJsonSchema(ProductsStoreSchema.data));
