@@ -43,6 +43,35 @@ export async function getAIComponent(request: string, data: {
 
     }
 
+    if (data.operate === 'fetchIcon') {
+        const uri = "https://www.onesteps.shop/api/get-image-info";
+        const params = {
+          type: 'icon',
+          prompt: 'cup'
+        };
+        const resp = await fetch(uri, {
+          method: "POST",
+          body: JSON.stringify(params),
+        });
+
+        if (resp.ok) {
+            const res = await resp.json();
+            if (res.data) {
+                console.log('**************', res.data);
+                const imageList = res.data && res.data.images ? res.data.images : []
+                if ("list" in cart) {
+                    cart.list.map((item: any, index) => {
+                        if (imageList[index]) {
+                            item.icon = imageList[index].url
+                        }
+                        return item;
+                    })
+                }
+            }
+        }
+        
+    }
+
     // if (data.operate === 'fetchIcon') {
     //     const imageRes = await getNounImage(request);
     //     const imageList = imageRes && imageRes.images ? imageRes.images : []
