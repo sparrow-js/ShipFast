@@ -74,7 +74,7 @@ export async function POST(req: Request) {
     const sleepres = await sleep();
     
 
-  const model = 'gpt-4-turbo';
+  const model = 'gpt-4';
   // console.log('**********',  zodToJsonSchema(ProductsStoreSchema.data));
 
   const response = await openai.chat.completions.create({
@@ -83,7 +83,7 @@ export async function POST(req: Request) {
     messages: messages,
     tools,
     tool_choice: 'auto',
-    response_format: { type: "json_object" }
+    // response_format: { type: "json_object" }
   });
 
   const data = new experimental_StreamData();
