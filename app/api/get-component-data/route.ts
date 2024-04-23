@@ -1,7 +1,6 @@
 import { respData, respErr } from "@/lib/resp";
 import {getAIComponent} from '@/service/generate/main';
 // import { getSession } from "@/lib/auth";
-export const runtime = 'edge';
 
 export async function POST(req: Request) {
     // const session = await getSession();
