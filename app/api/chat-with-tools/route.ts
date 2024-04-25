@@ -1,6 +1,7 @@
 import {generateStream} from '@/service/generate/stream';
 // import {generateStream} from '@/service/stream';
 
+export const runtime = 'edge';
 export async function POST(req: Request) {
   // const { messages } = await req.json();
   const stream = new ReadableStream({

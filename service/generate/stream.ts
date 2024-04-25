@@ -1,9 +1,10 @@
-import fetch from "node-fetch";
 import { TypeChatLanguageModel, createJsonTranslator, processRequests, success } from "@/typechat";
 import { createTypeScriptJsonValidator } from "@/typechat/ts";
 
 import { createZodJsonValidator } from "@/typechat/zod";
 import Schema, {schemaType} from './index';
+import OpenAI from 'openai';
+
 
 const OPENAI_API_KEY = process.env['OPENAI_KEY'];
 const OPENAI_ENDPOINT = process.env['OPENAI_BASE_URL'];
@@ -18,33 +19,61 @@ const model: TypeChatLanguageModel = {
 
 function createStreamingCompleter(onContent: (content: string) => void) {
     return async function complete(prompt: any) {
-        const response = await fetch("https://api.openai-proxy.org/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${OPENAI_API_KEY}`,
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({
+        const openai = new OpenAI({
+            apiKey: OPENAI_API_KEY, // defaults to process.env["OPENAI_API_KEY"]
+            baseURL: 'https://api.openai-proxy.org/v1',
+          });
+        
+          const stream = await openai.chat.completions.create({
                 model: 'gpt-4',
                 stream: true,
                 temperature: 0,
                 n: 1,
                 messages: prompt
-            })
-        });
+          });
+          let full_response = '';
+          for await (const chunk of stream) {
+            const content = chunk.choices[0]?.delta?.content || '';
+            full_response += content;
+            onContent(content);
+          }
+        // const response = await fetch("https://api.openai-proxy.org/v1/chat/completions", {
+        //     method: "POST",
+        //     headers: {
+        //         "Authorization": `Bearer ${OPENAI_API_KEY}`,
+        //         "content-type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         model: 'gpt-4',
+        //         stream: true,
+        //         temperature: 0,
+        //         n: 1,
+        //         messages: prompt
+        //     })
+        // });
+        // const textDecoderStream = new TextDecoderStream();
+        // if (response.body) {
+        //     const stream = response.body.pipeThrough(textDecoderStream);
+    
+        //     for await (const chunk of stream) {
+        //         // Do something with each chunk
+        //         console.log(chunk);
+        //     }
+        // } 
 
         let result = "";
-        for await (const data of parseDataEvents(response.body)) {
-            const deltaContent = JSON.parse(data).choices[0].delta.content;
-            if (deltaContent !== undefined) {
-                onContent(deltaContent);
-            }
-            result += deltaContent;
-        }
-        return success(result);
+        // for await (const data of parseDataEvents(response.body)) {
+        //     console.log('*******81118', data);
+        //     const deltaContent = JSON.parse(data).choices[0].delta.content;
+        //     if (deltaContent !== undefined) {
+        //         onContent(deltaContent);
+        //     }
+        //     result += deltaContent;
+        // }
+        return success(full_response);
     }
 }
-
+const textDecoder = new TextDecoder('utf-8');
 /**
  * @param {AsyncIterable<Buffer | string>} stream 
  */
@@ -86,9 +115,9 @@ export async function generateStream(
             socket.enqueue(encoder.encode(`${JSON.stringify(data)}\n`));
         }
     }
-    noticeHost({
-        success: 1
-    });
+    // noticeHost({
+    //     success: 1
+    // });
 
     const validator = createZodJsonValidator(Schema[data['schema']], "data");
 
