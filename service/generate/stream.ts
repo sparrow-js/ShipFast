@@ -4,6 +4,8 @@ import { createTypeScriptJsonValidator } from "@/typechat/ts";
 import { createZodJsonValidator } from "@/typechat/zod";
 import Schema, {schemaType} from './index';
 import OpenAI from 'openai';
+import {getUnsplashImage} from '@/lib/unsplash';
+import {getNounImage} from '@/lib/noun';
 
 
 const OPENAI_API_KEY = process.env['OPENAI_KEY'];
@@ -124,9 +126,49 @@ export async function generateStream(
     const translator = createJsonTranslator(model, validator);
 
     const result = await translator.translate(req);
-    console.log("\n------\n");
     if (result.success) {
-        console.log(result.data);
+        if (data.operate === 'fetchImage') {
+            const imageRes = await getUnsplashImage(req);
+            const imageList = imageRes && imageRes.images ? imageRes.images : []
+            if ("list" in result.data) {
+                result.data.list.map((item: any, index) => {
+                    if (imageList[index]) {
+                        item.image = imageList[index].url
+                    }
+                    return item;
+                })
+            }
+    
+        }
+    
+       
+        if (data.operate === 'fetchIcon') {
+            const uri = "https://www.onesteps.shop/api/get-image-info";
+            const params = {
+              type: 'icon',
+              prompt: 'cup'
+            };
+            const resp = await fetch(uri, {
+              method: "POST",
+              body: JSON.stringify(params),
+            });
+    
+            if (resp.ok) {
+                const res = await resp.json();
+                if (res.data) {
+                    const imageList = res.data && res.data.images ? res.data.images : []
+                    if ("list" in result.data) {
+                        result.data.list.map((item: any, index) => {
+                            if (imageList[index]) {
+                                item.icon = imageList[index].url
+                            }
+                            return item;
+                        })
+                    }
+                }
+            }
+            
+        }
         noticeHost(result.data);
     }
     else {

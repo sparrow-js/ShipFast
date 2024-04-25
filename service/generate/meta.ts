@@ -62,13 +62,13 @@ const Meta = {
             nodeId: "node_ockzs2vw43712",
             operate: 'fetchIcon'
         },
-        // {
-        //     id: 'ProductsStore',
-        //     schema: 'ProductsStoreSchema',
-        //     type: 'schema',
-        //     nodeId: "node_ockzs2vw4375",
-        //     operate: 'fetchImage'
-        // },
+        {
+            id: 'ProductsStore',
+            schema: 'ProductsStoreSchema',
+            type: 'schema',
+            nodeId: "node_ockzs2vw4375",
+            operate: 'fetchImage'
+        },
     ]
 };
 
