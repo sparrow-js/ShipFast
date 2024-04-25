@@ -38,23 +38,23 @@ const Meta = {
         // }
     ],
     store: [
-        // {
-        //     id: 'Style',
-        //     schema: 'StyleSchema',
-        //     type: 'schema',
-        // },
-        // {
-        //     id: 'HeaderStore',
-        //     schema: 'HeaderStoreSchema',
-        //     type: 'schema',
-        //     nodeId: "node_ockzs2vw4373",
-        // },
-        // {
-        //     id: 'BannerStore',
-        //     schema: 'BannerStoreSchema',
-        //     type: 'schema',
-        //     nodeId: "node_ockzs2vw4371",
-        // },
+        {
+            id: 'Style',
+            schema: 'StyleSchema',
+            type: 'schema',
+        },
+        {
+            id: 'HeaderStore',
+            schema: 'HeaderStoreSchema',
+            type: 'schema',
+            nodeId: "node_ockzs2vw4373",
+        },
+        {
+            id: 'BannerStore',
+            schema: 'BannerStoreSchema',
+            type: 'schema',
+            nodeId: "node_ockzs2vw4371",
+        },
         {
             id: 'AdvantagesStore',
             schema: 'AdvantagesStoreSchema',

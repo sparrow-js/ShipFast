@@ -9,7 +9,7 @@ const OPENAI_API_KEY = process.env['OPENAI_KEY'];
 const OPENAI_ENDPOINT = process.env['OPENAI_BASE_URL'];
 const model: TypeChatLanguageModel = {
     complete: createStreamingCompleter(s => {
-        console.log('*******', s);
+        // console.log('*******', s);
     })
 };
 

@@ -4,7 +4,6 @@ export async function serial(queue: any[], callback: (data: any) => void, fn = (
         for(let i = 0; i < queue.length; i++) {
 
             const data = await queue[i](resData)
-            console.log('************11166', data);
             callback(data);
             resData = fn(resData, data);
         }

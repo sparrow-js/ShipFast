@@ -20,7 +20,6 @@ export default function Page({
             return pump();
             function pump(): any {
               return reader.read().then(({ done, value }: { done: boolean; value: Uint8Array }) => {
-                console.log('********', textDecoder.decode(value))
                 // When no more data needs to be consumed, close the stream
                 if (done) {
                   controller.close();
