@@ -24,7 +24,7 @@ const validator = createZodJsonValidator(Schema['AdvantagesStoreSchema'], "data"
 
 
 function createStreamingCompleter(onContent: (content: string) => void) {
-    return async function complete(prompt: string) {
+    return async function complete(prompt: any) {
         const response = await fetch("https://api.openai-proxy.org/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -36,39 +36,7 @@ function createStreamingCompleter(onContent: (content: string) => void) {
                 stream: true,
                 temperature: 0,
                 n: 1,
-                messages: [
-                    {
-                      role: 'user',
-                      content: 'You are a service that translates user requests into JSON objects of type "data" according to the following TypeScript definitions:\n' +
-                        '```\n' +
-                        '// The following is a schema definition for sell shop app.\n' +
-                        'interface data {\n' +
-                        '    list: ({\n' +
-                        '        icon: "https://static.thenounproject.com/png/6785279-200.png";\n' +
-                        '        title: "Wide Selection" | "Wide Range of Options" | "Wide variety of options" | "Wide Variety of Designs" | "Wide variety of choices" | string;\n' +
-                        '        description: string; //  Generate Advantage description. The number of words is between 15 and 25. Required\n' +
-                        '    } | {\n' +
-                        '        icon: "https://static.thenounproject.com/png/6785279-200.png";\n' +
-                        '        title: "Superior Quality" | "Quality ingredients" | "Quality Assurance";\n' +
-                        '        description: string; // Generate Advantage description. The number of words is between 15 and 25. Required\n' +
-                        '    } | {\n' +
-                        '        icon: "https://static.thenounproject.com/png/6785279-200.png";\n' +
-                        '        title: "Competitive Prices";\n' +
-                        '        description: string; // Generate Advantage description. The number of words is between 15 and 25. Required\n' +
-                        '    } | {\n' +
-                        '        icon: "https://static.thenounproject.com/png/6785279-200.png";\n' +
-                        '        title: string;\n' +
-                        '        description: string; // Generate Advantage description. The number of words is between 15 and 25. Required\n' +
-                        '    })[]; // Generate four advantages, the first must be WideAdvantage\n' +
-                        '}\n' +
-                        '```\n' +
-                        'The following is a user request:\n' +
-                        '"""\n' +
-                        'cup shop\n' +
-                        '"""\n' +
-                        'The following is the user request translated into a JSON object with 2 spaces of indentation and no properties with the value undefined:\n'
-                    }
-                  ],
+                messages: prompt
             })
         });
 

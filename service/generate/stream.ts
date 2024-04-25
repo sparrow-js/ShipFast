@@ -146,7 +146,7 @@ export async function generateStream(
             const uri = "https://www.onesteps.shop/api/get-image-info";
             const params = {
               type: 'icon',
-              prompt: 'cup'
+              prompt: req
             };
             const resp = await fetch(uri, {
               method: "POST",
