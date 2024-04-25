@@ -5,6 +5,7 @@ export default function Pricing () {
     <h1 className="text-4xl lg:text-5xl font-bold lg:tracking-tight">Pricing</h1>
     <p className="text-lg mt-4 text-slate-600">Beta stage, free trial is welcome.</p></div>
   <div className="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
+    <div></div>
     <div>
       <div className="flex flex-col w-full order-first lg:order-none border-2 border-yellow-800 border-opacity-50 py-5 px-6 rounded-md">
         <div className="text-center">

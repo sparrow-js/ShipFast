@@ -20,6 +20,57 @@ function scrollToNode (nodeId: string) {
         designer.project.simulator?.scrollToNode(node)
     }
 }
+const textDecoder = new TextDecoder('utf-8');
+
+function getStreamTask (data: any, prompt: string, isTest: boolean = false) {
+    return function (prevData: any[]) {
+        let lastRes: any = null;
+        return new Promise((resolve) => {
+            const params = {
+                prompt,
+                data
+            };
+            fetch("/api/chat-with-tools", {
+                method: "POST",
+                body: JSON.stringify(params),
+              })
+              // Retrieve its body as ReadableStream
+              .then((response: any) => {
+                const reader = response.body.getReader();
+                return new ReadableStream({
+                  start(controller) {
+                    // resolve(1);
+                     const pump = () => {
+                      return reader.read().then(({ done, value }: { done: boolean; value: Uint8Array }) => {
+                        const decodeValue = textDecoder.decode(value);
+                        if (decodeValue){
+                            lastRes = JSON.parse(decodeValue);
+                        }
+                        // When no more data needs to be consumed, close the stream
+                        if (done) {
+     
+                          resolve({
+                            data: lastRes,
+                            params
+                          })
+                          controller.close();
+                          return;
+                        }
+                        // Enqueue the next data chunk into our target stream
+                        controller.enqueue(value);
+                        return pump();
+                      });
+                    }
+                    return pump();
+
+                  },
+                });
+              });
+        })
+       
+    }
+}
+
 
 function getTask (data: any, prompt: string, isTest: boolean = false) {
     return async function (prevData: any[]) {
@@ -68,9 +119,9 @@ export default async function createSerialPage(sectionList: any[], prompt: strin
     })
 }
 
-export  async function createTrySerialPage(sectionList: any[], prompt: string) {
+export async function createTrySerialPage(sectionList: any[], prompt: string) {
     const taskList = sectionList.reduce((prev, cur) => {
-        prev.push(getTask(cur, prompt, true));
+        prev.push(getStreamTask(cur, prompt, true));
         return prev;
     }, [])
     return serial(taskList, (res) => {
