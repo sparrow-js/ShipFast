@@ -54,6 +54,7 @@ const Meta = {
             schema: 'BannerStoreSchema',
             type: 'schema',
             nodeId: "node_ockzs2vw4371",
+            operate: 'fetchSingleImage'
         },
         {
             id: 'AdvantagesStore',

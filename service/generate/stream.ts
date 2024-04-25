@@ -140,6 +140,14 @@ export async function generateStream(
             }
     
         }
+
+        if (data.operate === 'fetchSingleImage') {
+            const imageRes = await getUnsplashImage(req);
+            const imageList = imageRes && imageRes.images ? imageRes.images : []
+            if ("image" in result.data) {
+                (result.data as any).image = imageList[0].url;
+            }
+        }
     
        
         if (data.operate === 'fetchIcon') {
