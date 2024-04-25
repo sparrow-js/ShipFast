@@ -30,6 +30,9 @@ function getStreamTask (data: any, prompt: string, isTest: boolean = false) {
                 prompt,
                 data
             };
+            setTimeout(() => {
+                scrollToNode(data.nodeId);
+            }, 500);
             fetch("/api/chat-with-tools", {
                 method: "POST",
                 body: JSON.stringify(params),
