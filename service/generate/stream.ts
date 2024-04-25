@@ -9,7 +9,7 @@ const OPENAI_API_KEY = process.env['OPENAI_KEY'];
 const OPENAI_ENDPOINT = process.env['OPENAI_BASE_URL'];
 const model: TypeChatLanguageModel = {
     complete: createStreamingCompleter(s => {
-        // console.log('*******', s);
+        console.log('*******', s);
     })
 };
 
@@ -86,6 +86,10 @@ export async function generateStream(
             socket.enqueue(encoder.encode(`${JSON.stringify(data)}\n`));
         }
     }
+    noticeHost({
+        success: 1
+    });
+
     const validator = createZodJsonValidator(Schema[data['schema']], "data");
 
     const translator = createJsonTranslator(model, validator);
