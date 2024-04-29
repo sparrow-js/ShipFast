@@ -33,8 +33,11 @@ export async function main(pageId: string, props: any) {
     // simulatorUrl 在当 engine-core.js 同一个父路径下时是不需要配置的！！！
     // 这里因为用的是 alifd cdn，在不同 npm 包，engine-core.js 和 react-simulator-renderer.js 是不同路径
     simulatorUrl: [
-      'http://localhost:5555/css/react-simulator-renderer.css',
-      'http://localhost:5555/js/react-simulator-renderer.js'
+      'https://www.onesteps.shop/render/css/react-simulator-renderer.css',
+      'https://www.onesteps.shop/render/js/react-simulator-renderer.js'
     ]
   }, preference);
 }
+
+// 'http://localhost:3000/render/css/react-simulator-renderer.css',
+// 'http://localhost:3000/render/js/react-simulator-renderer.js'
