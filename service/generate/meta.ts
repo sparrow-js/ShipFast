@@ -38,38 +38,38 @@ const Meta = {
         // }
     ],
     store: [
-        // {
-        //     id: 'Style',
-        //     schema: 'StyleSchema',
-        //     type: 'schema',
-        // },
-        // {
-        //     id: 'HeaderStore',
-        //     schema: 'HeaderStoreSchema',
-        //     type: 'schema',
-        //     nodeId: "node_ockzs2vw4373",
-        // },
-        // {
-        //     id: 'BannerStore',
-        //     schema: 'BannerStoreSchema',
-        //     type: 'schema',
-        //     nodeId: "node_ockzs2vw4371",
-        //     operate: 'fetchSingleImage'
-        // },
-        // {
-        //     id: 'AdvantagesStore',
-        //     schema: 'AdvantagesStoreSchema',
-        //     type: 'schema',
-        //     nodeId: "node_ockzs2vw43712",
-        //     operate: 'fetchIcon'
-        // },
-        // {
-        //     id: 'ProductsStore',
-        //     schema: 'ProductsStoreSchema',
-        //     type: 'schema',
-        //     nodeId: "node_ockzs2vw4375",
-        //     operate: 'fetchImage'
-        // },
+        {
+            id: 'Style',
+            schema: 'StyleSchema',
+            type: 'schema',
+        },
+        {
+            id: 'HeaderStore',
+            schema: 'HeaderStoreSchema',
+            type: 'schema',
+            nodeId: "node_ockzs2vw4373",
+        },
+        {
+            id: 'BannerStore',
+            schema: 'BannerStoreSchema',
+            type: 'schema',
+            nodeId: "node_ockzs2vw4371",
+            operate: 'fetchSingleImage'
+        },
+        {
+            id: 'AdvantagesStore',
+            schema: 'AdvantagesStoreSchema',
+            type: 'schema',
+            nodeId: "node_ockzs2vw43712",
+            operate: 'fetchIcon'
+        },
+        {
+            id: 'ProductsStore',
+            schema: 'ProductsStoreSchema',
+            type: 'schema',
+            nodeId: "node_ockzs2vw4375",
+            operate: 'fetchImage'
+        },
     ]
 };
 
